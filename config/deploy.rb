@@ -4,7 +4,7 @@ lock '3.6.0'
 set :application, 'facebeek'
 
 # cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/kakiuchis/facebeek'
+set :repo_url, 'https://github.com/kakiuchis/facebeek2'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, ENV['BRANCH'] || 'master'
