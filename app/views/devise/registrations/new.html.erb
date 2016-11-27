@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <%= image_tag("facebeek.png", :size => "400x400", :alt => "アイコン") %>
+
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <h2>新規登録</h2>
+
+      <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+        <%= f.error_messages! %>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+        </div>
+        
+        <div class="field">
+          <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "登録（登録アドレスに認証メールが来ます）", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+
+/* navbar 全体の背景色とボーダーカラー */
+.navbar-default {
+background-color: royalblue;
+border-color: midnightblue;
+}
+/* navbar テキストカラー */
+.navbar-default .navbar-nav > li > a {
+color: white;
+}
+/* navbar hover,focus時のテキストカラー */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+color: white;
+background-color: navy;
+}
+/* navbar active設定時のカラー */
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+color: #26534c;
+background-color: #c3ede7;
+}
+/* navbar ドロップダウン(親)のカラー */
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+color: black;
+background-color: #f5f5f5;
+}
+/* navbar ドロップダウン(子)のボックスカラー */
+.dropdown-menu {
+background-color: #f5f5f5;
+border: 1px solid #696969;
+border: 1px solid #696969(0, 0, 0, .15);
+
+}
+/* navbar ドロップダウン(子)テキストカラー */
+.dropdown-menu>li>a {
+color: black;
+}
+/* navbar ドロップダウン(子)focus,hover時のカラー */
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+color: white;
+background-color: #4169e1;
+}
+/* navbar ドロップダウン(子)内の区切り線(class=”divider”)のカラー */
+.dropdown-menu .divider {
+background-color: #696969;
+}
+/* navbar 画面サイズ767px以下の時のカラー */
+@media (max-width:767px) {
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+color: white;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+color: #26534c;
+background-color: transparent;
+}
+/* ドロップダウンactive設定時のカラー */
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover {
+color: white;
+background-color: #191970;
+}
+}
+/* navbar ハンバーガー四角枠 */
+.navbar-default .navbar-toggle {
+border-color: white;
+}
+/* navbar ハンバーガー三本線 */
+.navbar-default .navbar-toggle .icon-bar {
+background-color: white;
+}
+/* navbar ハンバーガーボタン,タップとホバーした時の背景色 */
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+background-color: white;
+}
+/* navbar ハンバーガーボタン,タップとホバーした時の四角枠 */
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+border-color: #696969;
+}
+/* navbar ハンバーガーボタン,タップとホバーした時の三本線 */
+.navbar-default .navbar-toggle:focus > .icon-bar,
+.navbar-default .navbar-toggle:hover > .icon-bar {
+background-color: #696969;
+}
+/* navbar Brandのカラー */
+.navbar-default .navbar-brand {
+color: white;
+}
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+color: white;
+background-color: #000080;
+}
+
+.panel{
+	background-color: white;
+}
+
+//.panel-body > p > a, .panel-body a:visited, .panel-body a:link {
+//	color: red;
+//}
+
+//.panel-body > p > strong > a{
+//	color: red;
+//}
+//.panel-body > a > h4{
+//	color: red;
+//}

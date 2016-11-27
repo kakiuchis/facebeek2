@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="wrapper col-md-4 col-md-offset-4 col-sm-10">
+    <h2>アカウント設定</h2>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_messages! %>
+
+      <div class="field">
+        <%= f.label :プロフィール画像 %><br/>
+        <%= profile_img100(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+　　　　　　
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", autofocus: true %>
+      </div>
+
+      <% if @user.provider.blank? %>
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+      
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+      
+        <div class="field">
+          <%= f.label :password %> <i>パスワード変更しない場合は不要です。</i>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %>文字以上で設定してください。</em>
+          <% end %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :password_confirmation %> <i>パスワード変更しない場合は不要です。</i>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :current_password %> <i>設定変更のために必要となります。</i>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+        
+      <% end %>
+      
+      
+    
+      <div class="actions">
+        <%= f.submit "更新", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+    
+    
+    <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %></p>
+
+  </div>
+</div>

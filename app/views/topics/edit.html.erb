@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h2>編集する</h2>
+	    <%= form_for(@topic, remote: true) do |f| %>
+		<%= f.error_messages! %>
+		<%= f.text_field :content, class: 'form-control' %>
+		<br/>
+		<%= f.submit '編集', class: 'btn btn-primary' %>
+	<% end %>
+  </div>
+</div>

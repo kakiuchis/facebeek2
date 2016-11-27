@@ -1,0 +1,7 @@
+<p>こんにちは <%= @resource.email %>!</p>
+
+<p>連続的な不正番号の入力により、アカウントがロックされました</p>
+
+<p>下記リンクよりアカウントロックを解除してください。</p>
+
+<p><%= link_to 'アカウントロック解除', unlock_url(@resource, unlock_token: @token) %></p>

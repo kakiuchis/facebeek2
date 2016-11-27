@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>ユーザー一覧</h2>
+
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-xs-6 col-sm-3 col-md-2">
+        <div class="thumbnail">
+          <%= link_to profile_img100(user), user_path(user) %>
+          <div class="caption">
+            <h4><%= link_to user.name, user_path(user) %></h4>
+            <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %>
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>メッセージ
+            <% end %>
+            <%= render 'follow_form', user: user %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
