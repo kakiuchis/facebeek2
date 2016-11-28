@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
     @friends = current_user.followers & current_user.followed_users
   end
+  
   def show
     @user = User.find(params[:id])
     @topics = Topic.order(:created_at).reverse_order

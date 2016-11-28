@@ -31,11 +31,9 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         #format.html { redirect_to topic_path(@topic) }
-        format.json { render :show, status: :created, location: @topic }
         format.js { render :index }
       else
         format.html { render :new }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,10 +44,8 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: '編集が完了しました' }
-        format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end

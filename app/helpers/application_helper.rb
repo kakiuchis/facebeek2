@@ -1,6 +1,6 @@
 module ApplicationHelper
   def profile_img(user)
-    return image_tag(user.avatar, :size => "20x20", :alt => user.name) if user.avatar?
+    return image_tag(user.avatar, size: "20x20", alt: user.name) if user.avatar?
     #return image_tag(user.avatar, :alt => user.name) if user.avatar?
 
     unless user.provider.blank?
@@ -9,11 +9,11 @@ module ApplicationHelper
       img_url = 'no_image.png'
     end
     #image_tag(img_url, alt: user.name)
-    image_tag(img_url, :size => "20x20", :alt => user.name)
+    image_tag(img_url, size: "20x20", alt: user.name)
     #image_tag(img_url, :alt => user.name)
   end
   def profile_img50(user)
-    return image_tag(user.avatar, :size => "50x50", :alt => user.name) if user.avatar?
+    return image_tag(user.avatar, size: "50x50", alt: user.name) if user.avatar?
     #return image_tag(user.avatar, :alt => user.name) if user.avatar?
 
     unless user.provider.blank?
@@ -22,11 +22,11 @@ module ApplicationHelper
       img_url = 'no_image.png'
     end
     #image_tag(img_url, alt: user.name)
-    image_tag(img_url, :size => "50x50", :alt => user.name)
+    image_tag(img_url, size: "50x50", alt: user.name)
     #image_tag(img_url, :alt => user.name)
   end
   def profile_img100(user)
-    return image_tag(user.avatar, :size => "100x100", :alt => user.name) if user.avatar?
+    return image_tag(user.avatar, size: "100x100", alt: user.name) if user.avatar?
     #return image_tag(user.avatar, :alt => user.name) if user.avatar?
 
     unless user.provider.blank?
@@ -35,7 +35,7 @@ module ApplicationHelper
       img_url = 'no_image.png'
     end
     #image_tag(img_url, alt: user.name)
-    image_tag(img_url, :size => "100x100", :alt => user.name)
+    image_tag(img_url, size: "100x100", alt: user.name)
     #image_tag(img_url, :alt => user.name)
   end
 end
