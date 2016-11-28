@@ -8,7 +8,7 @@
 
   <div class="row">
     <div class="col-sm-6">
-    <h3>友達</h3>
+      <h3>友達</h3>
       <div class="row">
         <% @friends.each do |user| %>
           <div class="col-xs-6 col-sm-6 col-md-4">
@@ -28,28 +28,29 @@
     </div>
 
     <div class="col-sm-6">
-    <h3>自分の投稿</h3>
+      <h3><%= @user.name %>の投稿</h3>
       <div id="topics_area">
         <% @topics.each do |topic| %>
+          <% if @friends.include?(@user) or current_user = @user%>
             <% if topic.user == @user %>
               <div class="panel panel-default">
                 <div class="panel-body">
-                <p><%= link_to profile_img(topic.user), user_path(topic.user) %>
-                <strong><%= link_to topic.user.name, user_path(topic.user) %>さん</strong> <%= topic.updated_at.strftime("%Y年%m月%d日 %p %l:%M") %></p>
-
-                <%= link_to topic_path(topic) do %>
-                  <h4><%= topic.content %></h4>
-                <% end %>
-              </div>
-              <div class="panel-footer">
-                <%= link_to ' コメント', topic_path(topic.id), class: "fa fa-reply fa-lg" %> | 
-                <% if topic.user == current_user %>
-                  <%= link_to ' 編集', edit_topic_path(topic.id), class: "fa fa-pencil-square-o fa-lg" %> | 
-                  <%= link_to ' 削除', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: '本当に削除していいですか？' } %>
-                <% end %>
-              </div>
+                  <p><%= link_to profile_img(topic.user), user_path(topic.user) %>
+                  <strong><%= link_to topic.user.name, user_path(topic.user) %>さん</strong> <%= topic.updated_at.strftime("%Y年%m月%d日 %p %l:%M") %></p>
+                  <%= link_to topic_path(topic) do %>
+                    <h4><%= topic.content %></h4>
+                  <% end %>
+                </div>
+                <div class="panel-footer">
+                  <%= link_to ' コメント', topic_path(topic.id), class: "fa fa-reply fa-lg" %>
+                  <% if topic.user == current_user %>
+                     | <%= link_to ' 編集', edit_topic_path(topic.id), class: "fa fa-pencil-square-o fa-lg" %> | 
+                    <%= link_to ' 削除', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+                  <% end %>
+                </div>
               </div>
             <% end %>
+          <% end %>
         <% end %>
     　　</div>
     </div>
