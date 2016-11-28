@@ -16,9 +16,6 @@
               <%= link_to profile_img100(user), user_path(user) %>
               <div class="caption">
                 <h4><%= link_to user.name, user_path(user) %></h4>
-                <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %>
-                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>メッセージ
-                <% end %>
                 <%= render 'follow_form', user: user %>
               </div>
             </div>
@@ -31,7 +28,7 @@
       <h3><%= @user.name %>の投稿</h3>
       <div id="topics_area">
         <% @topics.each do |topic| %>
-          <% if @friends.include?(@user) or current_user = @user%>
+          <% if @friends.include?(@user) or current_user = @user %>
             <% if topic.user == @user %>
               <div class="panel panel-default">
                 <div class="panel-body">
