@@ -112,13 +112,7 @@ background-color: #000080;
 	background-color: white;
 }
 
-//.panel-body > p > a, .panel-body a:visited, .panel-body a:link {
-//	color: red;
-//}
-
-//.panel-body > p > strong > a{
-//	color: red;
-//}
-//.panel-body > a > h4{
-//	color: red;
-//}
+.panel-body > a > h4:hover {
+	color: white;
+	background-color: black;
+}
