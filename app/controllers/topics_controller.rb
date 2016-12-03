@@ -62,7 +62,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    if @topic.user.name != current_user.name
+    if @topic.user_id != current_user.id
       redirect_to controller: 'topics', action: 'index'
     else
       @topic.destroy
