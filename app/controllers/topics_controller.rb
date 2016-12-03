@@ -1,31 +1,40 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_friends, only: [:index, :show, :create, :destroy]
 
   # GET /topics
   # GET /topics.json
   def index
     @topics = Topic.order(:created_at).reverse_order
-    @friends = current_user.followers & current_user.followed_users
     @topic = Topic.new
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @comment = @topic.comments.build
-    @comments = @topic.comments
+    if @friends.include?(@topic.user)
+      @comment = @topic.comments.build
+      @comments = @topic.comments
+    elsif @topic.user == current_user
+      @comment = @topic.comments.build
+      @comments = @topic.comments
+    else
+      redirect_to controller: 'topics', action: 'index'
+    end
   end
 
   # GET /topics/1/edit
   def edit
+    if @topic.user_id != current_user.id
+      redirect_to controller: 'topics', action: 'index'
+    end
   end
 
   # POST /topics
   # POST /topics.json
   def create
     @topics = Topic.order(:created_at).reverse_order
-    @friends = current_user.followers & current_user.followed_users
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     respond_to do |format|
@@ -53,10 +62,14 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @topic.destroy
-    respond_to do |format|
-      format.html { redirect_to topics_url}
-      format.json { head :no_content }
+    if @topic.user.name != current_user.name
+      redirect_to controller: 'topics', action: 'index'
+    else
+      @topic.destroy
+      respond_to do |format|
+        format.html { redirect_to topics_url}
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -69,5 +82,9 @@ class TopicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
       params.require(:topic).permit(:content)
+    end
+
+    def set_friends
+      @friends = current_user.followers & current_user.followed_users
     end
 end

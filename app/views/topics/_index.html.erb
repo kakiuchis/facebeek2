@@ -11,7 +11,7 @@
               </div>
               <div class="panel-footer">
                 <%= link_to ' コメント', topic_path(topic.id), class: "fa fa-reply fa-lg" %>
-                <% if topic.user == current_user %>
+                <% if topic.user = current_user %>
                    | <%= link_to ' 編集', edit_topic_path(topic.id), class: "fa fa-pencil-square-o fa-lg" %> | 
                   <%= link_to ' 削除', topic_path(topic.id), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？'} %>
                 <% end %>

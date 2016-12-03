@@ -28,7 +28,7 @@
       <h3><%= @user.name %>の投稿</h3>
       <div id="topics_area">
         <% @topics.each do |topic| %>
-          <% if @friends.include?(@user) or current_user = @user %>
+          <% if @friends.include?(@user) or current_user == @user %>
             <% if topic.user == @user %>
               <div class="panel panel-default">
                 <div class="panel-body">
