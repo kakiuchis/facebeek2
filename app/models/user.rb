@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed, dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :conversations, foreign_key: "sender_id", dependent: :destroy
+  has_many :reverse_conversations, foreign_key: "recipient_id", class_name: "Conversation", dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -68,6 +71,11 @@ class User < ActiveRecord::Base
   #フォローしているかどうかを確認する
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
+  end
+
+  #フォローされているかどうかを確認する
+  def followed?(other_user)
+    relationships.find_by(follower_id: other_user.id)
   end
   
   def unfollow!(other_user)
