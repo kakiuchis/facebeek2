@@ -14,8 +14,12 @@ class CommentsController < ApplicationController
   
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    render :index
+    if @comment.user.name != current_user.name
+      render :index
+    else
+      @comment.destroy
+      render :index
+    end
   end
   
   private
