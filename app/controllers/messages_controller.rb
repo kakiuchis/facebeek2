@@ -2,19 +2,19 @@ class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
     @friendids = current_user.followers.ids & current_user.followed_users.ids
-
   end
 
   def index
     # if current_user.id == @conversation.sender_id || current_user.id == @conversation.recipient_id
-    if @friendids.include?(@conversation.recipient_id) || @friendids.include?(@conversation.sender_id)
+    # if @friendids.include?(@conversation.recipient_id) || @friendids.include?(@conversation.sender_id)
     # if @conversation.sender_id || current_user.id == @conversation.recipient_id
+    if current_user.id == @conversation.recipient_id || current_user.id == @conversation.sender_id
       @messages = @conversation.messages
       if @messages.length > 10
         @over_ten = true
         @messages = @messages[-10..-1]
       end
-        if params[:m]
+      if params[:m]
         @over_ten = false
         @messages = @conversation.messages
       end
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
          @messages.last.read = true
         end
       end
-        @message = @conversation.messages.build
+      @message = @conversation.messages.build
     else
       redirect_to users_path
     end
