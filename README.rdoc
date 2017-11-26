@@ -1,28 +1,26 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
 
-Things you may want to cover:
+https://dry-brushlands-42086.herokuapp.com/
 
-* Ruby version
+## 機能
 
-* System dependencies
+- Bootstrapデザイン
+- topic機能（閲覧はフォローフォロアー間のみ、編集削除は投稿者のみ）
+- topicに投稿者表示
+- コメント機能
+- コメント機能をajaxで実装
+- フォロー、フォロワー機能
+- ログイン機能（メール認証）
+- プロフィール画像登録機能
+- メッセージ機能（フォローフォローワー間のみ）
+- Twitterログイン
+- IDやパスワードなどの環境変数化
+- aws運用(Unicorn nginx)→無料期間終了でHeroku移行
+- Capistranoで自動デプロイ→無料期間終了で運用停止
 
-* Configuration
+## バージョン
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+Rails 4.2.3
