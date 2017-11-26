@@ -21,6 +21,7 @@ gem 'rmagick'
 gem 'fog'
 gem 'dotenv-rails'
 gem 'unicorn'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
